@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Khách Hàng</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/TaiXe/GDDNC.css') }}">
+</head>
+<body">
+    <div class="container">
+        <p>Họ Và Tên Khách Hàng</p>
+        <p>Địa điểm A: 279 Đ. Nguyễn Tri Phương, Phường 8, Quận 10, Hồ Chí Minh, Việt Nam</p>
+        <p>Địa điểm B: 59C Nguyễn Đình Chiểu, Phường 6, Quận 3, Hồ Chí Minh, Việt Nam</p>
+        <p>Khoảng cách: 5.3 KM</p>
+        <p>Cước phí: 100tr</p>
+        <button onclick="navigateToDestination()" id="linkmap-btn">Chuyển đến MAPS</button>
+        <button onclick="window.location.href='/'" id="accept-btn">Xác nhận hoàn thành chuyến</button>
+    </div>
+    <script src="{{ url_for('static', filename='js/TaiXe/GDTX.js') }}"></script>
+</body>
+</html>

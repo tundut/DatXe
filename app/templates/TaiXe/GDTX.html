@@ -1,0 +1,26 @@
+{% extends "./base.html" %} {% block content %}
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/TaiXe/GDTX.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <div id="map" style="margin-top:100px"></div>
+
+
+    <!-- Popup for Status Management -->
+    <div id="statusPopup" class="popup">
+        <div class="popup-content">
+            <h3 class="popup-title">Cài Đặt Trạng Thái</h3>
+            <div class="toggle-container">
+                <span>Hoạt động</span>
+                <label class="switch">
+                    <input type="checkbox" id="activityToggle" onchange="toggleActivity()">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <button class="close-btn" onclick="dongpopup()">Đóng</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/TaiXe/GDTX.js') }}"></script>
+
+{% endblock %}

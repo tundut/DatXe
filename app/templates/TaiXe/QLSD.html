@@ -1,0 +1,46 @@
+{% extends "./base.html" %} {% block content %}
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/TaiXe/QLSD.css') }}">
+
+    <!-- Banner -->
+    <section class="banner">
+        <div class="banner-content">
+            <h1>SỐ DƯ TẠM TÍNH(*)</h1>
+            <p>Khả dụng: <span class="highlight">100.000.000 VNĐ</span></p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container-qlsd">
+            <!-- Quick Links -->
+            <div class="quick-links">
+                <div class="link-box">
+                    <h3>Tài khoản được liên kết</h3>
+                    <ul>
+                        <li><a href="#">Mã QR</a></li>
+                    </ul>
+                </div>
+                <div class="link-box">
+                    <h3>Lịch sử giao dịch</h3>
+                    <p>Đang phát triển...</p>
+                </div>
+                <div class="link-box">
+                    <h3>Điều chỉnh số dư</h3>
+                    <ul>
+                        <li><a href="#">Rút Tiền</a></li>
+                        <li><a href="#">Nạp Tiền</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- About Section -->
+            <section class="about">
+                <h2>SLOGAN SBOYS COMPANY</h2>
+                <p>"Bên bạn trọn đường"</p>
+            </section>
+        </div>
+    </main>
+
+
+{% endblock %}

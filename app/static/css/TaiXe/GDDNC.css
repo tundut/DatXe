@@ -1,0 +1,139 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif; /* Font hiện đại hơn */
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: url('https://i.pinimg.com/originals/b4/d8/24/b4d8242f4d4693d1c9cea2b8e98d51d4.gif') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden; /* Tránh scroll không cần thiết */
+}
+
+.container {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(240, 248, 255, 0.85)); /* Gradient nền */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Đổ bóng mạnh hơn */
+  width: 85%;
+  max-width: 400px; /* Giới hạn chiều rộng tối đa */
+  text-align: left;
+  margin-top: 50px; /* Khoảng cách từ trên xuống lớn hơn */
+  border: 1px solid rgba(0, 0, 0, 0.05); /* Viền nhẹ */
+  animation: fadeIn 0.5s ease-in-out; /* Hiệu ứng xuất hiện */
+}
+
+.title {
+  font-size: 24px;
+  color: #2c3e50; /* Màu xanh đậm nhã nhặn */
+  text-align: center;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #3498db; /* Đường viền dưới tiêu đề */
+  padding-bottom: 5px;
+}
+
+.customer-name {
+  font-weight: bold;
+  font-size: 28px;
+  color: #e67e22; /* Màu cam nổi bật */
+  margin-bottom: 15px;
+  text-align: center;
+  text-transform: uppercase; /* Chữ in hoa cho sang trọng */
+}
+
+.container p {
+  margin: 8px 0;
+  font-size: 15px;
+  color: #34495e; /* Màu chữ tối hơn, dễ đọc */
+  line-height: 1.4;
+}
+
+.label {
+  font-weight: bold;
+  color: #2980b9; /* Màu xanh dương cho nhãn */
+}
+
+#timer {
+  color: #c0392b; /* Màu đỏ đậm hơn */
+  font-weight: bold;
+  font-size: 18px;
+  background-color: rgba(231, 76, 60, 0.1); /* Nền nhẹ cho timer */
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+button#accept-btn {
+  margin-top: 15px;
+  padding: 10px;
+  background: linear-gradient(45deg, #2ecc71, #27ae60); /* Gradient cho nút */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  width: 100%;
+  transition: transform 0.2s, background 0.3s; /* Hiệu ứng mượt mà */
+}
+
+button#accept-btn:hover {
+  background: linear-gradient(45deg, #27ae60, #219653); /* Gradient tối hơn khi hover */
+  transform: scale(1.05); /* Phóng to nhẹ khi hover */
+}
+
+button#accept-btn:active {
+  transform: scale(0.98); /* Thu nhỏ nhẹ khi nhấn */
+}
+
+button#linkmap-btn {
+  margin-top: 15px;
+  padding: 10px;
+  background: linear-gradient(45deg, #2ecc71, #27ae60); /* Gradient cho nút */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  width: 100%;
+  transition: transform 0.2s, background 0.3s; /* Hiệu ứng mượt mà */
+}
+
+button#linkmap-btn:hover {
+  background: linear-gradient(45deg, #27ae60, #219653); /* Gradient tối hơn khi hover */
+  transform: scale(1.05); /* Phóng to nhẹ khi hover */
+}
+
+button#linkmap-btn:active {
+  transform: scale(0.98); /* Thu nhỏ nhẹ khi nhấn */
+}
+
+/* Hiệu ứng fade-in cho container */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .container {
+    width: 90%;
+    margin-top: 20px;
+  }
+  .customer-name {
+    font-size: 24px;
+  }
+  button#accept-btn {
+    font-size: 14px;
+  }
+  buttin#linkmap-btn{|
+    font-size: 14px;
+  }
+}

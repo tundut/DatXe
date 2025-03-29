@@ -1,0 +1,92 @@
+{% extends "./base.html" %} {% block content %}
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/KhachHang/DatXe.css') }}">
+
+  <div class="container-custom">
+    <div class="info-panel">
+      <h4 class="section-title">Thông tin vị trí</h4>
+      <form>
+        <div class="form-group">
+          <label for="locationFrom">Địa chỉ đi:</label>
+          <input type="text" class="form-control" id="locationFrom" placeholder="Nhập địa chỉ đi">
+        </div>
+        <div class="form-group">
+          <label for="locationTo">Địa chỉ đến:</label>
+          <input type="text" class="form-control" id="locationTo" placeholder="Nhập địa chỉ đến">
+        </div>
+        <div class="form-group">
+          <label>Chọn loại xe:</label>
+            <select class="form-control" id="vehicleType">
+              <option value="bike">Xe Máy (5.000đ/km)</option>
+              <option value="car">Ô Tô (10.000đ/km)</option>
+              <option value="premium">Máy bay (20.000đ/km)</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="amount">Số tiền:</label>
+          <input type="text" class="form-control mb-2" id="amount" value="0 VND" readonly>
+          <label for="amount">Quãng đường:</label>
+          <input type="text" class="form-control mb-2" id="distance" value="0 km" readonly>
+          <label for="amount">Thời gian dự kiến:</label>
+          <input type="text" class="form-control mb-2" id="duration" value="" readonly>
+        </div>
+        <div class="form-group">
+          <button type="button" class="btn btn-info btn-block w-100" onclick="showDiscountModal()">Chọn Ưu Đãi</button>
+          <input type="text" class="form-control mt-2" id="discount" value="Không có" readonly>
+          <button type="button" class="btn btn-secondary mt-3 w-100" onclick="calculateRoute()">Tìm đường</button>
+        </div>
+        
+        <div class="form-group">
+          <label>Phương thức thanh toán</label>
+          <form>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="paymentMethod" id="cash" value="cash" checked>
+              <label class="form-check-label" for="cash">Tiền mặt</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard" value="creditCard">
+              <label class="form-check-label" for="creditCard">Chuyển khoản</label>
+            </div>
+            <button type="button" class="btn btn-success mt-3 w-100">Đặt xe</button>
+          </form>
+        </div>
+      </form>
+
+      <div class="route-info" id="routeInfo"></div>
+    </div>
+
+    <div class="map-panel">
+      <div id="map"></div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="discountModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Chọn Ưu Đãi</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="list-group">
+            <li class="list-group-item" onclick="selectDiscount(this, 0.1, 'Giảm 10%')">Giảm 10%</li>
+            <li class="list-group-item" onclick="selectDiscount(this, 0.2, 'Giảm 20%')">Giảm 20%</li>
+            <li class="list-group-item" onclick="selectDiscount(this, 50000, 'Giảm 50.000đ')">Giảm 50.000đ</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" onclick="applyDiscount()">Xác nhận</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='js/KhachHang/DatXe.js') }}"></script>
+
+{% endblock %}

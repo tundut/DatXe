@@ -1,0 +1,25 @@
+# Ignore thư mục môi trường ảo
+.venv/
+.env
+
+# Ignore file biên dịch Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Ignore log, database, cache
+*.log
+*.sqlite3
+db.sqlite3
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore tệp cấu hình của hệ điều hành/macOS
+.DS_Store
+
+# Ignore tệp của IDE (VSCode, PyCharm)
+.vscode/
+.idea/
+*.iml

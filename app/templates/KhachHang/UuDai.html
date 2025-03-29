@@ -1,0 +1,143 @@
+{% extends "./base.html" %} {% block content %}
+
+  <div id="myCarousel" class="carousel slide mb-3" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{{ url_for('static', filename='images/uudai2.png') }}" class="d-block w-100" alt="Ảnh slide">
+        <div class="container">
+          <div class="carousel-caption">
+
+            <h1>EARLY APRIL DEAL – GIẢM NGAY 25%!</h1>
+            <p class="opacity-75">Chào tháng 4 với ưu đãi đặc biệt! Từ ngày 1/4 - 10/4, tất cả khách hàng đặt xe trên SBOYS sẽ được giảm ngay 25% cho mọi chuyến đi. Không cần nhập mã, ưu đãi tự động áp dụng!</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Thu thập</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{{ url_for('static', filename='images/uudai3.png') }}" class="d-block w-100" alt="Ảnh slide">
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>GIỚI THIỆU BẠN BÈ – NHẬN 30.000Đ!</h1>
+            <p>Mời bạn bè tham gia SBOYS, cả hai cùng nhận 30.000đ vào tài khoản sau khi hoàn tất chuyến đi đầu tiên. Giới thiệu càng nhiều, nhận thưởng càng lớn!</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Thu thập</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{{ url_for('static', filename='images/uudai4.png') }}" class="d-block w-100" alt="Ảnh slide">
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>BACK TO SCHOOL – GIẢM TỚI 30% CHO HỌC SINH, SINH VIÊN!</h1>
+            <p>Trở lại trường học thật dễ dàng với SBOYS! Xác minh thẻ sinh viên để nhận ngay giảm 30% cho các chuyến đi từ trường học, ký túc xá, thư viện. Áp dụng suốt tháng 4, giúp bạn di chuyển tiết kiệm hơn mỗi ngày!</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Thu thập</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+
+  </div>
+
+<div class="album bg-body-tertiary" bis_skin_checked="1">
+    <div class="container" bis_skin_checked="1">
+<hr class="featurette-divider">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" bis_skin_checked="1">
+        <div class="col" bis_skin_checked="1">
+          <div class="card shadow-sm" bis_skin_checked="1">
+            <img src="{{ url_for('static', filename='images/uudai2.png') }}">
+            <div class="card-body" bis_skin_checked="1">
+              <h4>EARLY APRIL DEAL – GIẢM NGAY 25%</h4>
+              <p class="card-text">Chào tháng 4 với ưu đãi đặc biệt! Từ ngày 1/4 - 10/4, tất cả khách hàng đặt xe trên SBOYS sẽ được giảm ngay 25% cho mọi chuyến đi. Không cần nhập mã, ưu đãi tự động áp dụng!</p>
+              <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
+                <div class="btn-group" bis_skin_checked="1">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Chi tiết</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Thu thập</button>
+                </div>
+                <small class="text-body-secondary">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col" bis_skin_checked="1">
+          <div class="card shadow-sm" bis_skin_checked="1">
+            <img src="{{ url_for('static', filename='images/uudai3.png') }}">
+            <div class="card-body" bis_skin_checked="1">
+              <h4>GIỚI THIỆU BẠN BÈ – NHẬN 30.000Đ</h4>
+              <p class="card-text">Mời bạn bè tham gia SBOYS, cùng nhận 30.000đ vào tài khoản sau khi hoàn tất chuyến đi đầu tiên. Giới thiệu càng nhiều, nhận thưởng càng lớn!</p>
+              <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
+                <div class="btn-group" bis_skin_checked="1">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Chi tiết</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Thu thập</button>
+                </div>
+                <small class="text-body-secondary">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col" bis_skin_checked="1">
+          <div class="card shadow-sm" bis_skin_checked="1">
+            <img src="{{ url_for('static', filename='images/uudai4.png') }}">
+            <div class="card-body" bis_skin_checked="1">
+              <h4>BACK TO SCHOOL – GIẢM TỚI 30% CHO HỌC SINH, SINH VIÊN!</h4>
+              <p class="card-text">Trở lại trường học thật dễ dàng với SBOYS! Xác minh thẻ sinh viên để nhận ngay giảm 30% cho các chuyến đi từ trường học, ký túc xá, thư viện. Áp dụng suốt tháng 4, giúp bạn di chuyển tiết kiệm hơn mỗi ngày!</p>
+              <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
+                <div class="btn-group" bis_skin_checked="1">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Chi tiết</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Thu thập</button>
+                </div>
+                <small class="text-body-secondary">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col" bis_skin_checked="1">
+          <div class="card shadow-sm" bis_skin_checked="1">
+            <img src="{{ url_for('static', filename='images/uudai1.jpg') }}">
+            <div class="card-body" bis_skin_checked="1">
+              <h4>CHÀO MỪNG NGƯỜI DÙNG MỚI – GIẢM NGAY 50%!</h4>
+              <p class="card-text">Nhập mã “SBOYS50” để nhận giảm ngay 50% cho chuyến đi đầu tiên. Áp dụng cho cả xe máy và ô tô, giúp bạn di chuyển tiết kiệm và tiện lợi hơn. Tải SBOYS ngay hôm nay để không bỏ lỡ ưu đãi hấp dẫn!</p>
+              <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
+                <div class="btn-group" bis_skin_checked="1">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Chi tiết</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Thu thập</button>
+                </div>
+                <small class="text-body-secondary">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col" bis_skin_checked="1">
+          <div class="card shadow-sm" bis_skin_checked="1">
+            <img src="{{ url_for('static', filename='images/uudai5.png') }}">
+            <div class="card-body" bis_skin_checked="1">
+              <h4>ƯU ĐÃI HỌC SINH, SINH VIÊN</h4>
+              <p class="card-text">Giảm ngay 20% cho mọi chuyến đi khi xác minh thẻ sinh viên trên ứng dụng SBOYS. Không giới hạn số lần sử dụng, giúp bạn di chuyển tiết kiệm hơn mỗi ngày!</p>
+              <div class="d-flex justify-content-between align-items-center" bis_skin_checked="1">
+                <div class="btn-group" bis_skin_checked="1">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Chi tiết</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Thu thập</button>
+                </div>
+                <small class="text-body-secondary">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+<hr class="featurette-divider">
+  </div>
+{% endblock %}

@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body, html {
+    width: 100vw;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+  }
+
+  .container-custom {
+  margin-top: 100px;
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 100px);
+  }
+
+  .info-panel {
+    width: 30vw;
+    height: 100%;
+    padding: 20px;
+    background: #f8f9fa;
+    border-right: 1px solid #ccc;
+    overflow-y: auto;
+  }
+
+  .map-panel {
+    width: 70vw;
+    height: 100%;
+    position: relative;
+  }
+
+  #map {
+    height: 100%;
+    width: 100%;
+  }
+
+  .section-title {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .route-info {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+
+  .list-group-item {
+    cursor: pointer;
+  }
+  
+  .list-group-item:hover {
+    background-color: #f8f9fa;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+}
+.leaflet-container {
+    position: relative !important;
+    z-index: 1; /* Giữ bản đồ bên dưới các phần khác */
+}

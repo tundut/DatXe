@@ -1,0 +1,94 @@
+{% extends "./base.html" %} {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/DangKy.css') }}">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- Bước chọn loại tài khoản -->
+            <div id="accountSelection" class="col-12 col-md-8 col-lg-6 text-center">
+                <h3 class="mb-4 fw-bold text-primary">Chọn loại tài khoản</h3>
+                <button class="btn-choice btn-customer" onclick="selectAccount('customer')">
+                    <i class="bi bi-person-circle"></i> Người đặt xe
+                </button>
+                <button class="btn-choice btn-driver" onclick="selectAccount('driver')">
+                    <i class="fa-solid fa-motorcycle"></i> Tài xế
+                </button>
+            </div>
+
+            <!-- Form đăng ký (ẩn ban đầu) -->
+             
+            <div id="registerForm" class="col-12 col-md-8 col-lg-6 register-panel position-relative" style="display: none;">
+                <button type="button" class="btn-back-custom">
+                    <i class="bi bi-arrow-left-circle"></i>
+                </button>
+                <h3 class="text-center text-success">Đăng ký</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" id="Name" class="form-control mb-2" placeholder="Họ và tên">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="date" id="Birthdate" class="form-control mb-2" placeholder="Ngày sinh">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="tel" id="PhoneNumber" class="form-control mb-2" placeholder="Số điện thoại">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" id="newUsername" class="form-control mb-2" placeholder="Tài khoản">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" id="Address" class="form-control mb-2" placeholder="Địa chỉ">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="password" id="newPassword" class="form-control mb-2" placeholder="Mật khẩu">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <select id="Gender" class="form-control mb-2">
+                            <option value="">Chọn giới tính</option>
+                            <option value="Nam">Nam</option>
+                            <option value="Nữ">Nữ</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="password" id="confirmPassword" class="form-control mb-2" placeholder="Nhập lại mật khẩu">
+                    </div>
+                </div>
+
+                <!-- Trường dành riêng cho tài xế -->
+                <div id="driverFields" style="display: none;">
+                    <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" id="carNumber" class="form-control mb-2" placeholder="Biển số xe">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" id="carType" class="form-control mb-2" placeholder="Loại xe">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" id="carCompany" class="form-control mb-2" placeholder="Hãng xe">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" id="carModel" class="form-control mb-2" placeholder="Mẫu xe">
+                    </div>
+                </div>
+
+                </div>
+
+                <p id="driverMessage" class="text-success" style="display: none;">Đã gửi Form cho quản trị viên - Chờ xét duyệt.</p>
+
+                <button id="submitRegister" class="btn btn-success w-100">Đăng ký</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/DangKy.js') }}" defer></script>
+
+{% endblock %}

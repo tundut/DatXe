@@ -1,0 +1,243 @@
+{% extends "./base.html" %} {% block content %}
+<div style="margin-top: 120px" onload="initializePage()">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/QTV/Quan_tri_vien.css') }}">
+
+    <div id="userManagement" class="container mt-4">
+        <h2>Danh sách tài khoản người dùng</h2>
+        <input type="text" id="searchInput" class="form-control mb-3" placeholder="Tìm kiếm theo ID, tên hoặc loại tài khoản..." onkeyup="searchUser()">
+        <button class="btn btn-success mb-3" onclick="showSection('unapprovedDrivers')">Phê duyệt tài khoản</button>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên</th>
+                    <th>Loại tài khoản</th>
+                    <th>Trạng thái</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+
+            <script>
+                var users = {{ users | tojson }};
+            </script>
+
+            <tbody id="userTable">
+            {% for user in users %}
+                {% if user.trang_thai_tai_khoan != "Chưa phê duyệt" %}
+                <tr>
+                    <td>{{ user.ma_nguoi_dung }}</td>
+                    <td>{{ user.ho_ten }}</td>
+                    <td>{{ user.loai_nguoi_dung }}</td>
+                    <td>{{ user.trang_thai_tai_khoan }}</td>
+                    <td>
+                        <button class="btn btn-info btn-sm" onclick="viewUser('{{ user.ma_nguoi_dung }}')">Xem</button>
+                        <button class="btn btn-warning btn-sm" onclick="toggleLock('{{ user.ma_tai_khoan }}', this)">
+                            {% if user.trang_thai_tai_khoan == "Đang hoạt động" %}
+                                Khóa
+                            {% else %}
+                                Mở khóa
+                            {% endif %}
+                        </button>
+                    </td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div id="offerManagement" class="container mt-4" style="display: none;">
+        <h2>Danh sách ưu đãi</h2>
+        <input type="text" id="searchOfferInput" class="form-control mb-3" placeholder="Tìm kiếm ưu đãi..." onkeyup="searchOffer()">
+        <button class="btn btn-success" onclick="showCreateOfferModal()">Tạo ưu đãi</button>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Mã ưu đãi</th>
+                    <th>Tên ưu đãi</th>
+                    <th>Giá trị</th>
+                    <th>Ngày bắt đầu</th>
+                    <th>Ngày kết thúc</th>
+                    <th>Điều kiện</th>
+                    <th>Số lượng</th>
+                    <th>Trạng thái</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="offerTable"></tbody>
+        </table>
+    </div>
+        <!-- Modal cho xem tài khoản người dùng -->
+    <div class="modal fade" id="userDetailModal" tabindex="-1" aria-labelledby="userDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="userDetailModalLabel">Thông tin tài khoản</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Họ tên:</strong> <span id="userName"></span></p>
+                    <p><strong>Số điện thoại:</strong> <span id="userPhone"></span></p>
+                    <p><strong>Địa chỉ:</strong> <span id="userAddress"></span></p>
+                    <p><strong>Giới tính:</strong> <span id="userGender"></span></p>
+                    <p><strong>Ngày sinh:</strong> <span id="userDOB"></span></p>
+                    <p><strong>Loại người dùng:</strong> <span id="userType"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Modal cho tạo ưu đãi -->
+<div class="modal fade" id="createOfferModal" tabindex="-1" aria-labelledby="createOfferModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createOfferModalLabel">Tạo mã ưu đãi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="createOfferForm">
+                    <input type="hidden" id="createOfferId">
+                    <div class="mb-3">
+                        <label class="form-label">Mã ưu đãi</label>
+                        <input type="text" id="createOfferCode" class="form-control" required>
+                        <button type="button" class="btn btn-sm btn-primary mt-2" onclick="generateOfferCode()">Tạo mã tự động</button>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Tên ưu đãi</label>
+                        <input type="text" id="createOfferName" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Giá trị ưu đãi</label>
+                        <input type="number" id="createOfferValue" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Ngày bắt đầu</label>
+                        <input type="date" id="createOfferStartDate" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Ngày kết thúc</label>
+                        <input type="date" id="createOfferEndDate" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Điều kiện sử dụng</label>
+                        <textarea id="createOfferCondition" class="form-control" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Số lượng ưu đãi</label>
+                        <input type="number" id="createOfferQuantity" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Trạng thái</label>
+                        <select id="createOfferStatus" class="form-control" required>
+                            <option value="active">Kích hoạt</option>
+                            <option value="inactive">Vô hiệu hóa</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-primary" onclick="saveCreateOffer()">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal cho sửa ưu đãi -->
+<div class="modal fade" id="editOfferModal" tabindex="-1" aria-labelledby="editOfferModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editOfferModalLabel">Sửa mã ưu đãi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editOfferForm">
+                    <input type="hidden" id="editOfferId">
+                    <div class="mb-3">
+                        <label class="form-label">Mã ưu đãi</label>
+                        <input type="text" id="editOfferCode" class="form-control" required>
+                        <button type="button" class="btn btn-sm btn-primary mt-2" onclick="generateOfferCode()">Tạo mã tự động</button>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Tên ưu đãi</label>
+                        <input type="text" id="editOfferName" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Giá trị ưu đãi</label>
+                        <input type="number" id="editOfferValue" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Ngày bắt đầu</label>
+                        <input type="date" id="editOfferStartDate" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Ngày kết thúc</label>
+                        <input type="date" id="editOfferEndDate" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Điều kiện sử dụng</label>
+                        <textarea id="editOfferCondition" class="form-control" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Số lượng ưu đãi</label>
+                        <input type="number" id="editOfferQuantity" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <button type="button" class="btn btn-success" onclick="activateOffer()">Kích hoạt ưu đãi</button>
+                        <button type="button" class="btn btn-danger" onclick="deactivateOffer()">Vô hiệu hóa ưu đãi</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-primary" onclick="saveEditOffer()">Sửa</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Modal xác nhận tài khoản -->
+    <div id="unapprovedDrivers" class="container mt-4" style="display: none;">
+        <h2>Danh sách tài xế chưa xác nhận</h2>
+        <table class="table table-striped">
+
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên</th>
+                </tr>
+            </thead>
+            <tbody id="unapprovedDriverTable"></tbody>
+
+        </table>
+    </div>
+
+        <!-- Modal phê duyệt tài xế -->
+<div class="modal fade" id="approveDriverModal" tabindex="-1" aria-labelledby="approveDriverModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Phê duyệt tài khoản tài xế</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có muốn phê duyệt tài khoản <strong id="approveDriverName"></strong> không?</p>
+                <input type="hidden" id="approveDriverId">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-primary" onclick="approveDriver()">Phê duyệt</button>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    <script src="{{ url_for('static', filename='js/QTV/Quan_tri_vien.js') }}"></script>
+</div>
+{% endblock %}

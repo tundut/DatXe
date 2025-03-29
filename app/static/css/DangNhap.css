@@ -1,0 +1,119 @@
+/* Tổng thể */
+body {
+    background: linear-gradient(135deg, #74b9ff, #d8ee6c);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+/* Khung đăng nhập */
+.login-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Tiêu đề */
+h3 {
+    text-align: center;
+    font-weight: bold;
+    color: #2d3436;
+}
+
+/* Nút đóng */
+.btn-close-custom {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.1);
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+/* Nút quên mật khẩu */
+.btn-forgot-password {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    color: #0984e3;
+    background: none;
+    border: none;
+    padding: 10px;
+    margin-top: 5px;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.btn-forgot-password:hover {
+    color: #065f99;
+    text-decoration: underline;
+    transform: scale(1.05);
+}
+
+
+.btn-close-custom:hover {
+    background: rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+/* Ô nhập liệu */
+.form-control {
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #dfe6e9;
+    transition: all 0.3s;
+}
+
+.form-control:focus {
+    border-color: #0984e3;
+    box-shadow: 0 0 8px rgba(9, 132, 227, 0.5);
+}
+
+/* Nút đăng nhập */
+.btn-success {
+    background: #00b894;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-success:hover {
+    background: #00917c;
+    transform: translateY(-2px);
+}
+
+/* Nút đăng ký */
+.btn-outline-primary {
+    border-radius: 10px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-outline-primary:hover {
+    background: #0984e3;
+    color: white;
+}
+
+/* Hiệu ứng fade in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

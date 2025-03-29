@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBOYS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/SBOYS.png') }}">
+
+</head>
+<body>
+        <script>
+            var current_user = {% if current_user.is_authenticated %}
+                {
+                    "ten_tai_khoan": "{{ current_user.ten_tai_khoan }}"
+                }
+            {% else %}
+                null
+            {% endif %};
+        </script>
+    <!-- Top Menu -->
+    <nav class="navbar navbar-expand-lg navbar-dark p-2" id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="{{ url_for('static', filename='images/SBOYS.png') }}" alt="SBOYS Logo" style="width: 150px"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+
+                    {% if loai_nguoi_dung == "quan_tri_vien" %}
+                    <li class="nav-item">
+                        <a class="nav-link" style="cursor: pointer;" onclick="showSection('userManagement')">Quản lý tài khoản</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="cursor: pointer;" onclick="showSection('offerManagement')">Quản lý ưu đãi</a>
+                    </li>
+                    {% elif loai_nguoi_dung == "tai_xe" %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('home.index') }}" style="cursor: pointer;">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="cursor: pointer;" onclick="chuyenTrang()">Quản lý số dư</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="cursor: pointer;" onclick="thaydoitrangthai()">Quản lý trạng thái</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="cursor: pointer;" onclick="locateUser()">Định vị</a>
+                    </li>
+
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('home.index') }}">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('book.dat_xe') }}">Đặt xe</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('promotion.uu_dai') }}">Ưu đãi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('feedback.danh_gia') }}">Đánh giá</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            {% if not logged_in %}
+            <a id="loginButton" class="navbar-brand" href="{{ url_for('auth.login') }}"><img src="{{ url_for('static', filename='images/account.png') }}" style="width: 50px">   Đăng nhập</a>
+            {% else %}
+            <a id="loginButton" class="navbar-brand" href="{{ url_for('auth.login') }}"><img src="{{ url_for('static', filename='images/account.png') }}" style="width: 50px">   {{ current_user.ten_tai_khoan }}</a>
+            {% endif %}
+        </div>
+    </nav>
+    {% block content %} {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js')}}" defer></script>
+</body>

@@ -1,0 +1,42 @@
+{% extends "./base.html" %} {% block content %}
+<!-- Full-width Image Container at the top -->
+
+
+<div class="image-container">
+    <img src="{{ url_for('static', filename='images/anh3.jpg') }}" alt="SBOYS Logo">
+</div>
+
+<div class="container marketing mt-5" bis_skin_checked="1">
+    <hr class="featurette-divider">
+    <!-- Three columns of text below the carousel -->
+    <div class="row" bis_skin_checked="1">
+      <div class="col-lg-4" bis_skin_checked="1">
+        <img src="{{ url_for('static', filename='images/xe1.png') }}" width="140" height="140">
+
+        <h2>Xe máy điện</h2>
+        <p>Sự kết hợp hoàn hảo giữa sự tiện lợi và bảo vệ môi trường. Xe máy điện chạy êm, không khói bụi, tiết kiệm nhiên liệu và là lựa chọn lý tưởng cho những chuyến đi nhẹ nhàng trong đô thị.</p>
+        <p><a class="btn btn-secondary" href="#">Chi tiết »</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4" bis_skin_checked="1">
+        <img src="{{ url_for('static', filename='images/xe3.png') }}" width="140" height="140">
+
+        <h2>Xe máy</h2>
+        <p>Phương tiện di chuyển nhanh chóng và linh hoạt, phù hợp cho các chuyến đi ngắn trong thành phố. Giúp bạn tránh kẹt xe và đến nơi đúng giờ với mức chi phí hợp lý.</p>
+        <p><a class="btn btn-secondary" href="#">Chi tiết »</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4" bis_skin_checked="1">
+        <img src="{{ url_for('static', filename='images/xe2.png') }}" width="140" height="140">
+
+        <h2>Ô tô</h2>
+        <p>Mang đến sự thoải mái và an toàn cho những chuyến đi xa hoặc khi cần di chuyển cùng gia đình, bạn bè. Tùy chọn đa dạng từ sedan, SUV đến xe hạng sang, đáp ứng mọi nhu cầu của bạn.</p>
+        <p><a class="btn btn-secondary" href="#">Chi tiết »</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+        <hr class="featurette-divider">
+</div>
+
+
+
+
+
+{% endblock %}

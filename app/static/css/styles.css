@@ -1,0 +1,101 @@
+/* Make the navbar transparent and overlay the image */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    padding: 20px 0;
+    transition: top 0.3s;
+}
+
+.navbar .navbar-brand {
+    color: white !important;
+    font-size: 1.5rem;
+}
+
+.navbar-brand {
+    max-width: 200px
+}
+
+.navbar a.nav-link {
+    color: white !important;
+    font-size: 1.5rem;
+}
+.navbar a.nav-link:hover, .navbar a.nav-link.active {
+    color: #ddd !important;
+}
+.image-container img {
+    width: 100%;
+    height: 800px;
+}
+.container {
+    max-width: 90%; /* Make the menu wider */
+}
+/* Center menu items and increase spacing */
+.navbar-nav {
+    flex: 0.5;
+    display: flex;
+    justify-content: space-between;
+}
+/* Floating button in the bottom-right corner */
+.settings-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 20;
+    font-size: 2rem;
+    padding: 10px
+}
+/* Settings panel styling */
+.settings-panel {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    display: none;
+    z-index: 20;
+    width: 200px;
+}
+
+.flash {
+    color: red;
+}
+
+.marketing .col-lg-4 {
+margin-bottom: 1.5rem;
+text-align: center;
+}
+/* rtl:begin:ignore */
+.marketing .col-lg-4 p {
+margin-right: .75rem;
+margin-left: .75rem;
+}
+
+/* Carousel base class */
+.carousel {
+margin-bottom: 4rem;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+bottom: 3rem;
+z-index: 10;
+background: rgba(0, 0, 0, 0.6);
+backdrop-filter: blur(5px);
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+height: 55rem;
+}
+
+
+  .featurette-divider {
+    margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+  }
+
+

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Khách Hàng</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/TaiXe/GDNC.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2 class="title">Thông Tin Chuyến Đi</h2>
+        <p class="customer-name">Họ Và Tên Khách Hàng</p>
+        <p><span class="label">Địa điểm A:</span> 279 Đ. Nguyễn Tri Phương, Phường 8, Quận 10, Hồ Chí Minh, Việt Nam</p>
+        <p><span class="label">Địa điểm B:</span> 59C Nguyễn Đình Chiểu, Phường 6, Quận 3, Hồ Chí Minh, Việt Nam</p>
+        <p><span class="label">Khoảng cách:</span> 5.3 KM</p>
+        <p><span class="label">Cước phí:</span> 100tr</p>
+        <p><span class="label">Thời gian còn lại:</span> <span id="timer">60</span> giây</p>
+        <button onclick="window.location.href='/hoan-tat'" id="accept-btn">Nhận chuyến</button>
+    </div>
+    <script src="{{ url_for('static', filename='js/TaiXe/GDTX.js') }}"></script>
+</body>
+</html>

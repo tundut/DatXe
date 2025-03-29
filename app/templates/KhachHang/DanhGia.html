@@ -1,0 +1,14 @@
+{% extends "./base.html" %} {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/KhachHang/Danhgia.css') }}">
+    <div class="container-danhgia">
+        <div class="header">
+            <button class="back-btn"><</button>
+            <button class="list-btn active" onclick="showRatedTrips()">Danh sách chuyến xe đã đánh giá</button>
+            <button class="list-btn" onclick="showUnratedTrips()">Danh sách chuyến xe chưa đánh giá</button>
+        </div>
+        <div class="review-section" id="reviewSection">
+            <!-- Nội dung sẽ được cập nhật động bằng JavaScript -->
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/KhachHang/Danhgia.js') }}"></script>
+{% endblock %}
