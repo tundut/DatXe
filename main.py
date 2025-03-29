@@ -16,6 +16,9 @@ app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{database_path}"
 
 db.init_app(app)
 
+with app.app_context():
+    db.create_all()
+
 register_blueprints(app)
 
 login_manager = LoginManager()
@@ -26,7 +29,4 @@ def load_user(user_id):
     return db.session.get(TaiKhoan, user_id)
 
 if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
-
-    app.run(debug=True)
+    app.run(debug=True, port=5001)
